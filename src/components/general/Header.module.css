@@ -1,0 +1,13 @@
+.container {
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.profileChip {
+  background-color: var(--primary-color---light);
+  border-radius: 16px;
+}
