@@ -85,7 +85,7 @@ function Analytics() {
               }
             />
             <Select
-              data={["ongoing", "complete", "ALL"]}
+              data={["ongoing", "completed", "ALL"]}
               color="primary"
               value={type}
               required

@@ -2,11 +2,15 @@ import useSWR from "swr";
 import API_CONSTANTS from "@/utils/apiConstants";
 import { genericAPIFetcher } from "@/utils/helpers/swr.helper";
 import { ICase } from "@/app/interfaces/ICase";
-
+type props = [
+  url: string,
+  type: "get" | "post" | "put" | "delete",
+  rest: any[]
+];
 export function useRecords(page: number, limit: number) {
   const { data, error, isLoading } = useSWR(
     [API_CONSTANTS.GET_ALL_CASES, "get", { params: { page, limit } }],
-    genericAPIFetcher
+    genericAPIFetcher as any
   );
 
   return {
@@ -20,7 +24,7 @@ export function useRecords(page: number, limit: number) {
 export function useRecord(recordId: string) {
   const { data, error, isLoading, mutate } = useSWR(
     [API_CONSTANTS.GET_CASE_DATA(recordId), "get"],
-    genericAPIFetcher
+    genericAPIFetcher as any
   );
 
   return {
@@ -43,7 +47,7 @@ export function useAnalytics(timeframe: string, type: string) {
         },
       },
     ],
-    genericAPIFetcher
+    genericAPIFetcher as any
   );
 
   return {
@@ -59,7 +63,7 @@ export function useAnalytics(timeframe: string, type: string) {
 export function useQuickStats() {
   const { data, error, isLoading } = useSWR(
     [API_CONSTANTS.GET_STATS, "get"],
-    genericAPIFetcher
+    genericAPIFetcher as any
   );
 
   return {

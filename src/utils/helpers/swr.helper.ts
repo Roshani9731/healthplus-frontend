@@ -1,5 +1,10 @@
 import axios from "axios";
 
+type props = [
+  url: string,
+  type: "get" | "post" | "put" | "delete",
+  rest: any[]
+];
 export const genericAPIFetcher = async ([url, type, ...rest]: [
   string,
   "get" | "post" | "put" | "delete",
