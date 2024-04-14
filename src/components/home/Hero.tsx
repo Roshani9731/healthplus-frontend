@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button, Title, Text, Anchor } from "@/components/mantine.helper";
 
-import LogoIIITM from "@/assets/logo_iiitm.png";
 import HeroCover from "@/assets/home/hero_cover.svg";
 import FeaturePersonalLevelMedicalRecords from "@/assets/home/features/personal_level_medical_records.svg";
 import FeaturePrescriptionMails from "@/assets/home/features/prescription_mails.svg";
@@ -49,7 +48,6 @@ function Hero() {
     <>
       <div className={styles.container}>
         <header className={styles.header}>
-          {/* <Image src={LogoIIITM} alt="IIITM Gwalior" /> */}
           <h2>Health Plus</h2>
           <div className={styles.headerRight}>
             <Button
@@ -88,8 +86,8 @@ function Hero() {
                 className={styles.mainLeftTextDesc}
               >
                 Aimed at enhancing your healthcare experience and providing
-                access and manage all your medical information at IIITM Health
-                Center in one place
+                access and manage all your medical information at Health Center
+                in one place
               </Text>
             </div>
             <div className={styles.features}>

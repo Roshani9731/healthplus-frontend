@@ -6,16 +6,15 @@ import useSWRMutation from "swr/mutation";
 import Link from "next/link";
 import { Button, Title, Text, TextInput } from "@mantine/core";
 import { useForm, UseFormReturnType } from "@mantine/form";
-//import { useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 
 import notificationManager from "@/components/helpers/NotificationManager";
 import { useCookies } from "react-cookie";
-// import API_CONSTANTS from "@/utils/apiConstants";
+import API_CONSTANTS from "@/utils/apiConstants";
 // import { authenticationFetcher } from "@/hooks/auth.swr";
 
 import styles from "./AuthModal.module.css";
 import IconGoogle from "@/assets/icons/Google.svg";
-import API_CONSTANTS from "@/utils/apiConstants";
 import { genericMutationFetcher } from "@/utils/helpers/swr.helper";
 import { useRouter } from "next/navigation";
 
@@ -56,32 +55,32 @@ function AuthModal({ closeModal }: { closeModal: () => void }) {
     router.push("/dashboard");
     notificationManager.showSuccess("Login Successful", "Redirecting...");
   };
-  //const handleGoogleAuth = useGoogleLogin({
-  // onSuccess: async (codeResponse) => {
-  // try {
-  // const { data: token } = await googleLogin({
-  // type: "post",
-  //rest: [
-  // {
-  //  code: codeResponse.code,
-  //},
-  //],
-  //});/
-  //handleAuthSuccess(token);
-  //} catch (err: any) {
-  // console.log(err);
-  //notificationManager.showError(err);
-  //}
-  //},
-  //onError: (error) => {
-  //console.log("Google login failed", error);
-  //notificationManager.showError(error);
-  //},
-  //flow: "auth-code",
-  // });
-  //const loginWithGoogle = async () => {
-  //  handleGoogleAuth();
-  //};
+  const handleGoogleAuth = useGoogleLogin({
+    onSuccess: async (codeResponse) => {
+      try {
+        const { data: token } = await googleLogin({
+          type: "post",
+          rest: [
+            {
+              code: codeResponse.code,
+            },
+          ],
+        });
+        handleAuthSuccess(token);
+      } catch (err: any) {
+        console.log(err);
+        notificationManager.showError(err);
+      }
+    },
+    onError: (error) => {
+      console.log("Google login failed", error);
+      notificationManager.showError(error);
+    },
+    flow: "auth-code",
+  });
+  const loginWithGoogle = async () => {
+    handleGoogleAuth();
+  };
   const handleSubmit = async (values: { email: string; password: string }) => {
     try {
       const { data: token } = await login({
@@ -149,7 +148,7 @@ function AuthModal({ closeModal }: { closeModal: () => void }) {
             }
             fullWidth
             size="md"
-            //onClick={loginWithGoogle}
+            onClick={loginWithGoogle}
           >
             Continue with Google
           </Button>

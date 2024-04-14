@@ -6,7 +6,7 @@ import { IUser } from "@/app/interfaces/IUser";
 export function useUser() {
   const { data, error, isLoading } = useSWR(
     [API_CONSTANTS.GET_USER, "get"],
-    genericAPIFetcher
+    genericAPIFetcher as any
   );
 
   return {
@@ -34,7 +34,7 @@ export const useSearchUser = (query: string = "") => {
       },
       ,
     ],
-    genericAPIFetcher
+    genericAPIFetcher as any
   );
 
   console.log(data?.data);

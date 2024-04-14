@@ -4,8 +4,8 @@ import RootStyleRegistry from "./emotion";
 import { Notifications } from "@/components/mantine.helper";
 
 export const metadata: Metadata = {
-  title: "IIITM Health Center",
-  description: "Portal for IIITM Health Center",
+  title: "Health Center",
+  description: "Portal for Health Center",
 };
 
 export default function RootLayout({

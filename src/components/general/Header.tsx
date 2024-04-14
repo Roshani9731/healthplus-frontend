@@ -10,7 +10,6 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import Image from "next/image";
-import IIITMIcon from "@/assets/iiitm_icon.svg";
 import AvaterIcon from "@/assets/general/avatar_icon.svg";
 import { useUser } from "@/hooks/user.swr";
 import { IconLogout, IconUser } from "@tabler/icons-react";
@@ -47,7 +46,6 @@ function Header() {
     >
       <Link href={"/dashboard"}>
         <Flex direction="row" align="center" gap={16}>
-          <Image width={20.1} height={32} src={IIITMIcon} alt="IIITM Logo" />
           <Title order={2} size="md">
             Health Center
           </Title>
@@ -72,7 +70,9 @@ function Header() {
             <Menu.Target>
               <UnstyledButton>
                 <Flex gap={8}>
-                  <Text transform="capitalize" weight={600}>{userData.name}</Text>
+                  <Text transform="capitalize" weight={600}>
+                    {userData.name}
+                  </Text>
                   <Image src={AvaterIcon} alt="avater" width={25} height={25} />
                 </Flex>
               </UnstyledButton>
